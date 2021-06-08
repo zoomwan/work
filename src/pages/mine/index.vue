@@ -21,6 +21,7 @@
           </div>
         </van-button>
       </van-sticky>
+      <!-- 头像 -->
       <div class="persion" v-for="item in user" :key="item._id">
         <p>
           <img
@@ -30,6 +31,7 @@
           />
           <img :src="item.avatar" alt="" v-show="my" />
         </p>
+        <!-- 用户名回显 -->
         <div class="niupi">
           <div v-show="init">
             <h5 @click="tologin()">登录/注册</h5>
@@ -242,6 +244,7 @@
 <script>
 import { Toast } from "vant";
 import { reqUser, reqInfoUpdate, reqPasswordUpdate } from "../../api/user";
+import { getToken } from "../../../../../day12-vuex/pm-项目手机端/code/project/src/utils/auth";
 export default {
   components: {},
   data() {
@@ -310,9 +313,12 @@ export default {
       this.user.push(result.data);
       // console.log(this.user);
       if (result.status == 200) {
-        this.my = true;
-        this.init = false;
-        localStorage.setItem("userInfo", JSON.stringify(result.data));
+        if (getToken) {
+          console.log(getToken);
+          this.my = true;
+          this.init = false;
+          localStorage.setItem("userInfo", JSON.stringify(result.data));
+        }
       }
     },
 
