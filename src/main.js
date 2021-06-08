@@ -18,9 +18,14 @@ import {
   Field,
   Uploader,
   Toast,
+  ActionSheet,
+  Popup,
 } from "vant";
 import "vant/lib/index.css";
 
+Vue.use(Popup);
+
+Vue.use(ActionSheet);
 Vue.use(Uploader); //上传文件
 Vue.use(Form); //表单
 Vue.use(Field);
@@ -35,7 +40,7 @@ Vue.use(Icon); //图标
 Vue.use(Sticky); //粘性布局
 Vue.use(TabbarItem);
 Vue.use(Swipe); //轮播
-Vue.use(Toast);//清提示
+Vue.use(Toast); //清提示
 Vue.config.productionTip = false;
 
 new Vue({
