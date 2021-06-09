@@ -193,7 +193,6 @@ export default {
         message: "你确定删除全部商品吗？",
       })
         .then(async () => {
-          // 创建一个空数组
           let ids = [];
           console.log(this.products);
           //遍历所有的商品，找到所有购物车商品id，push到空数组中
@@ -266,6 +265,9 @@ export default {
 .good {
   display: flex;
 }
+.goods img {
+  margin-left: 5px;
+}
 img {
   width: 80px;
   height: 80px;
@@ -289,7 +291,7 @@ img {
   background: none;
 }
 .carts {
-  margin-left: 120px;
+  margin-left: 100px;
 }
 .gohome {
   margin-left: 130px;
