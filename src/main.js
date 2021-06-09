@@ -3,6 +3,9 @@ import App from "./App.vue";
 
 import router from "./router";
 import {
+  Lazyload,
+  Tab,
+  Tabs,
   Tabbar,
   TabbarItem,
   Sticky,
@@ -26,6 +29,9 @@ import {
 } from "vant";
 import "vant/lib/index.css";
 
+Vue.use(Tabs);
+Vue.use(Tab);
+Vue.use(Lazyload);
 Vue.use(Popup);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
