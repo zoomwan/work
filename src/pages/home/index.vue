@@ -405,7 +405,7 @@ export default {
 .lun-e {
   width: 100%;
   height: 40px;
-  background: aqua;
+
   display: flex;
 }
 .lun-e .van-icon {
