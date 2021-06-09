@@ -18,8 +18,8 @@
               <h5 v-show="my">已登录</h5>
             </div>
             <div class="rig">
-              <van-icon name="setting-o" size="2.1rem" @click="goUser" />
-              <van-icon name="chat-o" size="2.1rem" />
+              <van-icon name="setting-o" size="1.8rem" @click="goUser" />
+              <van-icon name="chat-o" size="1.8rem" />
             </div>
           </div>
         </van-button>
