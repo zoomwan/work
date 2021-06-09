@@ -245,7 +245,7 @@
 <script>
 import { Toast } from "vant";
 import { reqUser, reqInfoUpdate, reqPasswordUpdate } from "../../api/user";
-import { getToken } from "../../../../../day12-vuex/pm-项目手机端/code/project/src/utils/auth";
+import { getToken } from "../../utils/auth";
 export default {
   components: {},
   data() {
