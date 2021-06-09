@@ -70,6 +70,12 @@ export default {
       obj.isDefault = item.isDefault;
       const result = await updateAddress(item._id, obj);
       console.log(result);
+
+      // 将选择中的收货人保存在localstorage
+      if (result.data.isDefault == false) {
+        localStorage.setItem("shouhuoren", JSON.stringify([obj]));
+        console.log(localStorage.getItem("shouhuoren"));
+      }
     },
     // 地址列表
     async getAdlist(params) {

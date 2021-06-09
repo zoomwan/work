@@ -157,14 +157,18 @@ export default {
           //说明有收货人，否则就表示没有收货人  收货人选择那个，就会显示谁是那个收货人
           let consignee = JSON.parse(localStorage.getItem("shouhuoren"));
           console.log(consignee);
-          const resu = await reqOrder({
+          // 订单提交
+          reqOrder({
             receiver: consignee[0].receiver,
             regions: consignee[0].regions,
             address: consignee[0].address,
             orderDetails,
+          }).then((resu) => {
+            if (resu.data.code == "success") {
+              Dialog({ message: "订单保存成功" });
+              this.$router.push("/orders");
+            }
           });
-          console.log(resu);
-          this.$router.push("/order");
         } else {
           Dialog({ message: "请添加收货人" });
           this.$router.push("/address");

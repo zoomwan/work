@@ -11,6 +11,6 @@ export const reqCartdel = (id) => delet("/api/v1/shop_carts/" + id);
 export const reqCartdels = (data) => post("/api/v1/shop_carts/delmany", data);
 
 // 获取订单列表
-export const reqOrderList = () => get("/api/v1/orders");
+export const reqOrder = (data) => post("/api/v1/orders", data);
 // 收货地址列表
 export const reqAddressList = () => get("/api/v1/addresses");
