@@ -250,6 +250,7 @@ export default {
 <style scoped>
 .good-list {
   padding-bottom: 60px;
+  margin-top: 40px;
 }
 .num {
   height: 80px;
