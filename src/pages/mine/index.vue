@@ -8,11 +8,12 @@
             <div class="lef">
               <p>
                 <img
+                  v-show="init"
                   src="https://res.vmallres.com/nwap/20210415/staticm/img/personal/defaultface_user_after.png"
                   alt=""
                 />
               </p>
-              <h5 @click="tologin()">登录/注册</h5>
+              <h5 @click="tologin()" v-show="init">登录/注册</h5>
             </div>
             <div class="rig">
               <van-icon name="setting-o" size="2.1rem" @click="goUser" />
@@ -108,7 +109,7 @@
           <van-grid-item icon="manager" text="教育购" color="#ee0a24" />
           <van-grid-item icon="bag" text="优购物码" />
           <van-grid-item icon="hot" text="我的拼团" />
-          <van-grid-item icon="logistics" text="收货地址" />
+          <van-grid-item icon="logistics" text="收货地址" @click="goAddress" />
           <van-grid-item icon="bookmark" text="预约记录" />
           <van-grid-item icon="umbrella-circle" text="福利中心" />
         </van-grid>
@@ -195,7 +196,7 @@
         <!-- 头像 -->
         <div class="image">
           <van-uploader :after-read="afterRead" />
-          <img :src="imgurl" alt="" />
+          <img :src="imgurl" alt="" class="head_img" />
         </div>
         <!-- 昵称 -->
         <van-field
@@ -313,8 +314,8 @@ export default {
       this.user.push(result.data);
       // console.log(this.user);
       if (result.status == 200) {
-        if (getToken) {
-          console.log(getToken);
+        if (getToken()) {
+          // console.log(getToken());
           this.my = true;
           this.init = false;
           localStorage.setItem("userInfo", JSON.stringify(result.data));
@@ -330,7 +331,14 @@ export default {
         avatar: this.imgurl,
       });
       console.log(result);
-      location.reload();
+      if (result.data.code == "success") {
+        Toast("修改成功");
+        setTimeout(() => {
+          location.reload();
+        }, 300);
+      } else {
+        Toast(result.data.message);
+      }
     },
     async goindex() {
       this.tag = false;
@@ -342,7 +350,13 @@ export default {
       console.log(result);
       if (result.data.code == "success") {
         Toast("修改密码成功");
+      } else {
+        Toast(result.data.message);
       }
+    },
+    // 跳转收货页面
+    goAddress() {
+      this.$router.push("/address");
     },
   },
   created() {
@@ -356,9 +370,13 @@ export default {
 };
 </script>
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
+/* 头像 */
+.head_img {
+  width: 80px;
+  height: 80px;
+}
+.van-action-sheet {
+  height: 200px;
 }
 .wode {
   background-color: #f9f9f9;
@@ -399,6 +417,7 @@ export default {
   width: 4rem;
   height: 4rem;
   margin: 0 0.7rem;
+  border-radius: 50%;
 }
 .zong .lef {
   height: 2.875rem;

@@ -20,11 +20,16 @@ import {
   Toast,
   ActionSheet,
   Popup,
+  AddressEdit,
+  Checkbox,
+  CheckboxGroup,
 } from "vant";
 import "vant/lib/index.css";
 
 Vue.use(Popup);
-
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(AddressEdit); //使用地址列表
 Vue.use(ActionSheet);
 Vue.use(Uploader); //上传文件
 Vue.use(Form); //表单

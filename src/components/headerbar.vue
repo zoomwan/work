@@ -13,7 +13,11 @@ export default {
   computed: {},
   watch: {},
 
-  methods: {},
+  methods: {
+    back() {
+      this.$router.back();
+    },
+  },
   created() {},
   mounted() {},
   beforeCreate() {},
