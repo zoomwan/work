@@ -166,7 +166,6 @@ export default {
         if (res.data.addresses.length > 0) {
           //说明有收货人，否则就表示没有收货人  收货人选择那个，就会显示谁是那个收货人
           let consignee = JSON.parse(localStorage.getItem("shouhuoren"));
-          console.log(consignee);
           // 订单提交
           reqOrder({
             receiver: consignee[0].receiver,
@@ -194,7 +193,6 @@ export default {
       })
         .then(async () => {
           let ids = [];
-          console.log(this.products);
           //遍历所有的商品，找到所有购物车商品id，push到空数组中
           this.products.forEach((v) => {
             ids.push(v._id);
