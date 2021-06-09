@@ -27,10 +27,13 @@ import {
   Checkbox,
   CheckboxGroup,
   Overlay,
+  SubmitBar,
 } from "vant";
 import "vant/lib/index.css";
 
 Vue.use(Tabs);
+Vue.use(SubmitBar);
+
 Vue.use(Tab);
 Vue.use(Lazyload);
 Vue.use(Popup);
