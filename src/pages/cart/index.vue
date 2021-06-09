@@ -1,6 +1,10 @@
 <template>
   <div>
     <div class="cart">
+      <Header
+        ><span class="carts">购物车</span>
+        <span class="gohome" @click="gohome">首页</span></Header
+      >
       <div class="good-list">
         <!-- 两个id 里面的是商品id(item.product._id)  外面的是(item._id)添加购物车生成的id  删除商品就传入商品的id，删除购物车就传购物车的id -->
         <div v-for="item in products" :key="item._id">
@@ -55,8 +59,11 @@ import {
   reqCartdel,
   reqCartdels,
 } from "../../api/cart";
+import Header from "../../components/headerbar.vue";
 export default {
-  components: {},
+  components: {
+    Header,
+  },
   data() {
     return {
       products: [], // 刚开始规定全选框没有选中
@@ -94,6 +101,9 @@ export default {
     },
   },
   methods: {
+    gohome() {
+      this.$router.push("/");
+    },
     async getCartList() {
       const result = await reqCartList();
       this.products = result.data;
@@ -157,14 +167,18 @@ export default {
           //说明有收货人，否则就表示没有收货人  收货人选择那个，就会显示谁是那个收货人
           let consignee = JSON.parse(localStorage.getItem("shouhuoren"));
           console.log(consignee);
-          const resu = await reqOrder({
+          // 订单提交
+          reqOrder({
             receiver: consignee[0].receiver,
             regions: consignee[0].regions,
             address: consignee[0].address,
             orderDetails,
+          }).then((resu) => {
+            if (resu.data.code == "success") {
+              Dialog({ message: "订单保存成功" });
+              this.$router.push("/orders");
+            }
           });
-          console.log(resu);
-          this.$router.push("/order");
         } else {
           Dialog({ message: "请添加收货人" });
           this.$router.push("/address");
@@ -179,7 +193,6 @@ export default {
         message: "你确定删除全部商品吗？",
       })
         .then(async () => {
-          // 创建一个空数组
           let ids = [];
           console.log(this.products);
           //遍历所有的商品，找到所有购物车商品id，push到空数组中
@@ -240,6 +253,7 @@ export default {
 <style scoped>
 .good-list {
   padding-bottom: 60px;
+  margin-top: 40px;
 }
 .num {
   height: 80px;
@@ -250,6 +264,9 @@ export default {
 }
 .good {
   display: flex;
+}
+.goods img {
+  margin-left: 5px;
 }
 img {
   width: 80px;
@@ -272,5 +289,11 @@ img {
   width: auto;
   margin-right: 20px;
   background: none;
+}
+.carts {
+  margin-left: 100px;
+}
+.gohome {
+  margin-left: 130px;
 }
 </style>

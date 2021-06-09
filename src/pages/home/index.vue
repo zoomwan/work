@@ -92,14 +92,17 @@
     </div>
     <div class="lun-e">
       <h4>好物购 <van-icon name="bullhorn-o" /></h4>
-      <p>欢迎进入澳门赌场->澳门赌场是一次最新的玩家体验11111111</p>
     </div>
     <div class="alls">
       <ul class="cp">
-        <li v-for="item in products" :key="item._id" @click="jumpPdesc(item._id)">
-          <img :src="item.coverImg" alt="">
-          <p>{{item.name}}</p>
-          <h4>{{'￥'+item.price}}</h4>
+        <li
+          v-for="item in products"
+          :key="item._id"
+          @click="jumpPdesc(item._id)"
+        >
+          <img :src="item.coverImg" alt="" />
+          <p>{{ item.name }}</p>
+          <h4>{{ "￥" + item.price }}</h4>
         </li>
       </ul>
     </div>
@@ -208,9 +211,9 @@ export default {
       console.log(result);
       this.products = result.data.products;
     },
-    jumpPdesc(id){
-      this.$router.push('/detail/'+id)
-    }
+    jumpPdesc(id) {
+      this.$router.push("/detail/" + id);
+    },
   },
   created() {
     this.getProducts();
@@ -226,7 +229,7 @@ export default {
 .home {
   margin: 0 10px;
 }
-.fixed{
+.fixed {
   width: 100%;
   z-index: 1;
   background: white;
@@ -399,24 +402,24 @@ export default {
 .lun-c li img {
   width: 100%;
 }
-.lun-e{
+.lun-e {
   width: 100%;
   height: 40px;
-  background: aqua;
+
   display: flex;
 }
-.lun-e .van-icon{
+.lun-e .van-icon {
   font-size: 20px;
   line-height: 40px;
   color: red;
 }
-.lun-e h4{
-   line-height: 40px;
+.lun-e h4 {
+  line-height: 40px;
   font-size: 20px;
   width: 130px;
   height: 40px;
 }
-.lun-e p{
+.lun-e p {
   width: 100%-130px;
   background: red;
   text-align: center;
@@ -424,12 +427,12 @@ export default {
   line-height: 40px;
   overflow: hidden;
 }
-.alls{
+.alls {
   width: 100%;
   height: auto;
   margin-bottom: 50px;
 }
-.cp{
+.cp {
   width: 100%;
   height: auto;
   list-style: none;
@@ -437,7 +440,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.cp li{
+.cp li {
   width: 165px;
   height: 190px;
   margin-top: 10px;
@@ -448,13 +451,12 @@ export default {
   background: rgb(241, 243, 241);
   border-radius: 10px;
 }
-.cp li img{
+.cp li img {
   width: 122px;
   height: 122px;
 }
-.cp li h4{
+.cp li h4 {
   color: red;
   font-size: 14px;
 }
-
 </style>
