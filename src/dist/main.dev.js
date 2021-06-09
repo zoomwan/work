@@ -12,6 +12,12 @@ require("vant/lib/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+_vue["default"].use(_vant.GoodsAction);
+
+_vue["default"].use(_vant.GoodsActionButton);
+
+_vue["default"].use(_vant.GoodsActionIcon);
+
 _vue["default"].use(_vant.Tabs);
 
 _vue["default"].use(_vant.Tab);

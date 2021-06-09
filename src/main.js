@@ -29,6 +29,12 @@ import {
 } from "vant";
 import "vant/lib/index.css";
 
+import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant';
+
+Vue.use(GoodsAction);
+Vue.use(GoodsActionButton);
+Vue.use(GoodsActionIcon);
+
 Vue.use(Tabs);
 Vue.use(Tab);
 Vue.use(Lazyload);
