@@ -6,14 +6,16 @@
         <van-button type="primary" class="header">
           <div class="zong">
             <div class="lef">
-              <p>
+              <p v-for="item in user" :key="item._id">
                 <img
                   v-show="init"
                   src="https://res.vmallres.com/nwap/20210415/staticm/img/personal/defaultface_user_after.png"
                   alt=""
                 />
+                <img :src="item.avatar" alt="" v-show="my" class="my_img" />
               </p>
               <h5 @click="tologin()" v-show="init">登录/注册</h5>
+              <h5 v-show="my">已登录</h5>
             </div>
             <div class="rig">
               <van-icon name="setting-o" size="2.1rem" @click="goUser" />
@@ -34,6 +36,7 @@
         </p>
         <!-- 用户名回显 -->
         <div class="niupi">
+          <!-- 未登录状态 -->
           <div v-show="init">
             <h5 @click="tologin()">登录/注册</h5>
             <p><van-icon class="url" name="smile" size=".6rem" /> 签到领积分</p>
@@ -70,8 +73,8 @@
     <div class="twobankuai">
       <nav class="order">
         <div class="lanmu">
-          <h5>我的订单</h5>
-          <p>全部订单></p>
+          <h5 @click="goDdan">我的订单</h5>
+          <p @click="goDdan">全部订单></p>
         </div>
         <div class="twowo">
           <van-grid :column-num="5">
@@ -166,7 +169,9 @@
       </div>
     </div>
     <div class="foot">
-      <div class="ziti"><span>登录</span><span>|</span><span>反馈</span></div>
+      <div class="ziti">
+        <span @click="tologin">登录</span><span>|</span><span>反馈</span>
+      </div>
     </div>
     <div class="choose">
       <div class="choo">
@@ -256,6 +261,7 @@ export default {
       tag: false,
       init: true,
       my: false,
+
       user: [],
       userInfo: {},
       actions: [
@@ -274,6 +280,18 @@ export default {
   watch: {},
 
   methods: {
+    // // 监听滚动条
+    // scrollt() {
+    //   window.onscroll = function () {
+    //     this.scrolls =
+    //       document.documentElement.scrollTop || document.body.scrollTop;
+    //     console.log(this.scrolls);
+    //   };
+    // },
+    goDdan() {
+      console.log(11111);
+      this.$router.push("/orders");
+    },
     tologin() {
       this.$router.push("../register");
     },
@@ -309,17 +327,22 @@ export default {
 
     // 获取用户的信息
     async getuserInfo() {
-      const result = await reqUser();
-      console.log(result);
-      this.user.push(result.data);
-      // console.log(this.user);
-      if (result.status == 200) {
-        if (getToken()) {
-          // console.log(getToken());
-          this.my = true;
-          this.init = false;
-          localStorage.setItem("userInfo", JSON.stringify(result.data));
+      if (getToken()) {
+        const result = await reqUser();
+        console.log(result);
+        this.user.push(result.data);
+        // console.log(this.user);
+        if (result.status == 200) {
+          if (getToken()) {
+            // console.log(getToken());
+            this.my = true;
+            this.init = false;
+            localStorage.setItem("userInfo", JSON.stringify(result.data));
+          }
         }
+      } else {
+        this.init = true;
+        console.log(1);
       }
     },
 
@@ -361,6 +384,7 @@ export default {
   },
   created() {
     this.getuserInfo();
+    // this.scrollt();
   },
   mounted() {},
   beforeCreate() {},
@@ -371,6 +395,9 @@ export default {
 </script>
 <style scoped>
 /* 头像 */
+.my_img {
+  border-radius: 50%;
+}
 .head_img {
   width: 80px;
   height: 80px;

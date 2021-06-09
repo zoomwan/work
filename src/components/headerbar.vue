@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="fan" @click="back"><span>返回</span> <slot></slot></div>
+    <div class="fan"><span @click="back">返回</span> <slot></slot></div>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
 
   methods: {
     back() {
-      this.$router.back();
+      this.$router.go(-1);
     },
   },
   created() {},
@@ -41,5 +41,6 @@ export default {
   box-sizing: border-box;
   padding: 0 10px;
   width: 100%;
+  font-size: 16px;
 }
 </style>

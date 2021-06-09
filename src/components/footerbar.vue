@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <van-tabbar route>
+    <van-tabbar route v-if="$route.meta.showFooter">
       <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item replace to="/sort" icon="apps-o">分类</van-tabbar-item>
       <van-tabbar-item replace to="/find" icon="search">发现</van-tabbar-item>

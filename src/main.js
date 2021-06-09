@@ -3,6 +3,9 @@ import App from "./App.vue";
 
 import router from "./router";
 import {
+  Lazyload,
+  Tab,
+  Tabs,
   Tabbar,
   TabbarItem,
   Sticky,
@@ -23,11 +26,25 @@ import {
   AddressEdit,
   Checkbox,
   CheckboxGroup,
+  Overlay,
+  SubmitBar,
 } from "vant";
 import "vant/lib/index.css";
 
+import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant';
+
+Vue.use(GoodsAction);
+Vue.use(GoodsActionButton);
+Vue.use(GoodsActionIcon);
+
+Vue.use(Tabs);
+Vue.use(SubmitBar);
+
+Vue.use(Tab);
+Vue.use(Lazyload);
 Vue.use(Popup);
 Vue.use(Checkbox);
+Vue.use(Overlay); //遮罩层
 Vue.use(CheckboxGroup);
 Vue.use(AddressEdit); //使用地址列表
 Vue.use(ActionSheet);
