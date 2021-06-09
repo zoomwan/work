@@ -12,6 +12,9 @@ require("vant/lib/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+//立即的事
+_vue["default"].use(_vant.Dialog);
+
 _vue["default"].use(_vant.GoodsAction);
 
 _vue["default"].use(_vant.GoodsActionButton);
@@ -20,6 +23,8 @@ _vue["default"].use(_vant.GoodsActionIcon);
 
 _vue["default"].use(_vant.Tabs);
 
+_vue["default"].use(_vant.SubmitBar);
+
 _vue["default"].use(_vant.Tab);
 
 _vue["default"].use(_vant.Lazyload);
@@ -27,6 +32,9 @@ _vue["default"].use(_vant.Lazyload);
 _vue["default"].use(_vant.Popup);
 
 _vue["default"].use(_vant.Checkbox);
+
+_vue["default"].use(_vant.Overlay); //遮罩层
+
 
 _vue["default"].use(_vant.CheckboxGroup);
 

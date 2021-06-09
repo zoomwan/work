@@ -32,6 +32,9 @@ import {
 import "vant/lib/index.css";
 
 import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant';
+import { Dialog } from 'vant';               //立即的事
+
+Vue.use(Dialog)
 
 Vue.use(GoodsAction);
 Vue.use(GoodsActionButton);

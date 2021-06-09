@@ -23,6 +23,8 @@ exports.reqProductPdesc = reqProductPdesc;
 
 var reqCartProuduct = function reqCartProuduct(data) {
   return (0, _request.post)('/api/v1/shop_carts', data);
-};
+}; //获取购物车
+// export const reqCartProuducts =() =>get('/api/v1/shop_carts')
+
 
 exports.reqCartProuduct = reqCartProuduct;

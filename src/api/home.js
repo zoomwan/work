@@ -8,3 +8,6 @@ export const reqProductPdesc =(id) =>get('/api/v1/products/'+id)
 
 //加入购物车
 export const reqCartProuduct =(data) =>post('/api/v1/shop_carts',data)
+
+//获取购物车
+// export const reqCartProuducts =() =>get('/api/v1/shop_carts')
