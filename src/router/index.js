@@ -88,6 +88,12 @@ const router = new VueRouter({
       component: () => import("../pages/mine/updateAddress.vue"),
       meta: { showFooter: true },
     },
+    // 订单列表页
+    {
+      path: "/orders",
+      component: () => import("../pages/mine/orders.vue"),
+      meta: { showFooter: true },
+    },
   ],
 });
 export default router;
