@@ -1,6 +1,10 @@
 <template>
   <div>
     <div class="cart">
+      <Header
+        ><span class="carts">购物车</span>
+        <span class="gohome" @click="gohome">首页</span></Header
+      >
       <div class="good-list">
         <!-- 两个id 里面的是商品id(item.product._id)  外面的是(item._id)添加购物车生成的id  删除商品就传入商品的id，删除购物车就传购物车的id -->
         <div v-for="item in products" :key="item._id">
@@ -55,8 +59,11 @@ import {
   reqCartdel,
   reqCartdels,
 } from "../../api/cart";
+import Header from "../../components/headerbar.vue";
 export default {
-  components: {},
+  components: {
+    Header,
+  },
   data() {
     return {
       products: [], // 刚开始规定全选框没有选中
@@ -94,6 +101,9 @@ export default {
     },
   },
   methods: {
+    gohome() {
+      this.$router.push("/");
+    },
     async getCartList() {
       const result = await reqCartList();
       this.products = result.data;
@@ -272,5 +282,11 @@ img {
   width: auto;
   margin-right: 20px;
   background: none;
+}
+.carts {
+  margin-left: 120px;
+}
+.gohome {
+  margin-left: 130px;
 }
 </style>
