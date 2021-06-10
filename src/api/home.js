@@ -11,3 +11,6 @@ export const reqCartProuduct =(data) =>post('/api/v1/shop_carts',data)
 
 //获取购物车
 // export const reqCartProuducts =() =>get('/api/v1/shop_carts')
+
+//获取用户信息
+export const reqMsg= () =>get('/api/v1/users/info')

@@ -20,7 +20,9 @@
           </van-swipe>
         </p>
         <van-icon name="chat-o" />
-        <h4>登录</h4>
+        <h4>
+          <p v-show="flag" @click="jumpDL">登录</p>
+          <img :src="unknown" alt="" v-show="!flag"></h4>
       </div>
       <div class="tits">
         <van-tabs v-model="active" type="line">
@@ -110,11 +112,14 @@
 </template>
 
 <script>
-import { reqProducts } from "../../api/home";
+import {getToken } from '../../utils/auth'
+import { reqProducts,reqMsg } from "../../api/home";
 export default {
   components: {},
   data() {
     return {
+      flag:true,
+      unknown:'',
       products: [],
       words: [
         "组长王豪强",
@@ -214,9 +219,26 @@ export default {
     jumpPdesc(id) {
       this.$router.push("/detail/" + id);
     },
+    async toggle(){
+      const token=getToken()
+      if(!token){
+        this.flag=true
+      }else{
+        const result = await reqMsg()
+        console.log(result)
+        const imge=result.data.avatar
+        this.unknown=imge
+        this.flag=false
+      }
+    },
+    jumpDL(){
+      this.$router.push('/login')
+    },
+
   },
   created() {
     this.getProducts();
+    this.toggle()
   },
   mounted() {},
   beforeCreate() {},
@@ -274,9 +296,32 @@ export default {
   line-height: 40px;
 }
 .topHead h4 {
-  font-weight: normal;
-  font-size: 13px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  position: relative;
+}
+.topHead h4 p{
+  display: block;
+  text-align: center;
+   width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
   line-height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.topHead h4 img{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+   top: -10px;
+  left: 0;
+  
 }
 .van-swipe {
   color: rgb(179, 174, 174);
