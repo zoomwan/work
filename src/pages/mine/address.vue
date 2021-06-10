@@ -112,7 +112,7 @@ export default {
   box-sizing: border-box;
   display: flex;
   margin-top: 10px;
-  border: solid 1px #999;
+  /* border: solid 1px #999; */
   box-shadow: 0 0 5px #999;
   justify-content: space-around;
   align-items: center;

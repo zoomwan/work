@@ -278,6 +278,7 @@ img {
   width: 25px;
   height: 25px;
   background: pink;
+  border-radius: 50%;
   text-align: center;
   line-height: 25px;
   display: inline-block;

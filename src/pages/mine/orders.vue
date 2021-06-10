@@ -1,5 +1,6 @@
 <template>
   <div class="orders">
+    <Back><span class="list">订单列表</span></Back>
     <table class="tb">
       <thead>
         <tr class="trs">
@@ -8,6 +9,7 @@
           <th>详细地址</th>
           <th>商品价格</th>
           <th>操作</th>
+          <th>####</th>
         </tr>
       </thead>
       <tbody class="trs">
@@ -20,23 +22,11 @@
           <td>{{ item.price }}</td>
           <td class="cc clean">
             <div class="btns">
-              <van-button
-                icon="plus"
-                type="danger"
-                @click.stop="del(item._id)"
-                class="delbtn"
-                size="mini"
-                >删除</van-button
-              >
-              <van-button
-                icon="plus"
-                type="info"
-                @click="det(item._id)"
-                class="delbtn"
-                size="mini"
-                >详情</van-button
-              >
+              <button @click.stop="del(item._id)" class="delbtn">删除</button>
+              <button @click="det(item._id)" class="delbtn">详情</button>
             </div>
+          </td>
+          <td>
             <!-- 勾选 -->
             <van-checkbox
               v-model="item.checked"
@@ -78,8 +68,9 @@ import {
   getOrderdetail,
   delOrderall,
 } from "../../api/orders";
+import Back from "../../components/headerbar.vue";
 export default {
-  components: {},
+  components: { Back },
   data() {
     return {
       list: [],
@@ -161,11 +152,15 @@ export default {
 };
 </script>
 <style scoped>
+.list {
+  margin-left: 100px;
+}
 .tb {
   box-sizing: border-box;
   border-collapse: collapse;
   width: 98%;
-  margin: 10px auto;
+  margin: 50px auto;
+  border-spacing: 0;
 }
 .tb tr {
   width: 100%;
@@ -180,10 +175,11 @@ th {
 .tb tr th,
 .tb tr td {
   width: 20%;
+  text-align: center;
 }
 .tb tr:nth-child(2n) {
-  background: rgb(192, 192, 192);
-  color: #fff;
+  background: rgb(238, 237, 237);
+  color: rgb(241, 136, 218);
 }
 .btns {
   width: 50px;
@@ -200,17 +196,19 @@ th {
 .delbtn {
   height: 20px;
   width: 40px;
-  margin-top: 2px;
+  margin-top: 5px;
   font-size: 8px;
-  text-align: center;
+  border: none;
+  border-radius: 5px;
+  margin-left: 30px;
 }
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  overflow-x: auto;
-  width: 100%;
+
+  width: 100vw;
 }
 .desc {
   width: 90%;
@@ -219,13 +217,14 @@ th {
   border-radius: 5px;
   box-sizing: border-box;
   padding: 5px 10px;
+  overflow-x: auto;
 }
 .desc p {
   font-weight: 900;
   font-size: 16px;
 }
 .detail_img {
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
   box-shadow: 0 0 10px #999;
   margin-bottom: 5px;
