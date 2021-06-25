@@ -2,7 +2,6 @@
   <div class="sort">
     <div class="top">
       <van-search
-        v-model="value"
         shape="round"
         background="#fff"
         placeholder="请输入搜索关键词"
@@ -86,4 +85,15 @@ export default {
 };
 </script>
 <style scoped>
+img,
+.vant-img {
+  width: 90%;
+  margin-top: 20px;
+}
+.vant-search {
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 </style>

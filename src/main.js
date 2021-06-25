@@ -28,14 +28,19 @@ import {
   CheckboxGroup,
   Overlay,
   SubmitBar,
+  TreeSelect,
+  Image as VanImage,
+  Search,
 } from "vant";
 import "vant/lib/index.css";
 
-import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant';
-import { Dialog } from 'vant';               //立即的事
+import { GoodsAction, GoodsActionIcon, GoodsActionButton } from "vant";
+import { Dialog } from "vant"; //立即的事
 
-Vue.use(Dialog)
-
+Vue.use(Dialog);
+Vue.use(Search);
+Vue.use(VanImage);
+Vue.use(TreeSelect); //分类选择
 Vue.use(GoodsAction);
 Vue.use(GoodsActionButton);
 Vue.use(GoodsActionIcon);
