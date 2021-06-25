@@ -55,6 +55,10 @@ export default {
       const result = await updateAddress(this.id, params);
       console.log(result);
       if (result.status == 200) {
+        if (params.isDefault == true) {
+          console.log(11);
+          localStorage.setItem("shouhuoren", JSON.stringify([params]));
+        }
         Toast("保存成功");
         this.receiver = "";
         this.mobile = "";

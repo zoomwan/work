@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { isLogin } from "../utils/auth";
 export default {
   components: {},
   data() {
@@ -15,7 +16,11 @@ export default {
 
   methods: {
     back() {
-      this.$router.go(-1);
+      if (isLogin()) {
+        this.$router.push("/home");
+      } else {
+        this.$router.push("/login");
+      }
     },
   },
   created() {},
